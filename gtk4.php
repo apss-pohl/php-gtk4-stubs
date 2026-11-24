@@ -14,7 +14,7 @@ namespace Gtk4;
  * Extension version, version_compare()-friendly.
  * @var string
  */
-const VERSION = '0.4.0';
+const VERSION = '0.5.0';
 /**
  * "built <date>, git <hash>" of the loaded binary.
  * @var string
@@ -7405,7 +7405,6 @@ final class GActionMapObject extends GObject implements GActionMap
 /**
  * `GApplication` is the core class for application support.
  *
- * @property-write ?GActionGroup $action_group
  * @property ?string $application_id
  * @property int $flags
  * @property int $inactivity_timeout
@@ -13496,11 +13495,6 @@ final class GskTextNode extends GskRenderNode
         unset($color);
         unset($offset);
     }
-    /** Retrieves the color used by the text $node. */
-    public function get_color(): GdkRGBA
-    {
-        return null;
-    }
     /** Returns the font used by the text $node. */
     public function get_font(): PangoFont
     {
@@ -13520,6 +13514,13 @@ final class GskTextNode extends GskRenderNode
     public function has_color_glyphs(): bool
     {
         return false;
+    }
+    /**
+     * Retrieves the color used by the text $node.
+     */
+    public function get_color(): GdkRGBA
+    {
+        return null;
     }
     /**
      * The glyphs the node draws, as a glyph string.
@@ -25128,13 +25129,6 @@ class GtkSnapshot extends GdkSnapshot
     {
         unset($texture);
         unset($bounds);
-    }
-    /**
-     * Removes the top element from the stack of render nodes and adds it to the nearest
-     * `GLShaderNode` below it.
-     */
-    public function gl_shader_pop_texture(): void
-    {
     }
     /** Applies a perspective projection transform. */
     public function perspective(float $depth): void
